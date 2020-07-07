@@ -1,0 +1,65 @@
+
+.Content
+  -# %header.header
+  -#   .header__bar.row
+  -#     .leftHeader
+  -#       %h1.grid-6
+  -#         %a.post.Home{:href => "/"} HOME
+  -#     .rightHeader  
+  -#       - if user_signed_in?
+  -#         .user_nav.grid-6
+  -#           = link_to "ログアウト", destroy_user_session_path, class: "post Logout", method: :delete
+  -#           = link_to  "地点追加", new_place_path, class: "post AddPlace"
+  -#       - else
+  -#         .grid-6
+  -#           = link_to "ログイン", new_user_session_path, class: "post Login"
+  -#           = link_to "新規登録", new_user_registration_path, class: "post Signup"
+  %h1.mainMessage.animate きっと見つかる、あなたの行きたい　
+  %p.subMessage.animate さぁ はじめよう
+  .grid-6
+    .leftBtn
+      = link_to "Sign in", new_user_session_path, class: "Btn Login"
+    .rightBtn
+      = link_to "Sign up", new_user_registration_path, class: "Btn Signup"
+  %footer
+    %p.copyright
+      Copyright RecommendedPlace 2020.
+:javascript
+  $(function(){
+    $('.animate, .Btn').textillate({
+
+      // ループのオンオフ、falseの場合、outは発動しない
+      loop: false,
+
+      // テキストが置き換えられるまでの表示時間
+      minDisplayTime: 1000,
+
+      // 遅延時間
+      initialDelay: 0,
+
+      // アニメーションが自動的にスタートするかどうか
+      autoStart: true,
+
+      // フェードインのエフェクトの詳細設定
+      in: {
+        // エフェクトの名前（animate.cssをご参照下さい）
+        effect: 'fadeInDown',
+
+        // 遅延時間の指数
+        delayScale: 1.0,
+
+        // 文字ごとの遅延時間
+        delay: 50,
+
+        // trueにすることでアニメーションをすべての文字に同時に適用される
+        sync: false,
+
+        // trueにすることで文字を順番にではなく、ランダムに入ってくるようにする
+        // (注：syncがtrueの場合は無効になる)
+        shuffle: false
+      }
+
+      
+      
+    });
+  })

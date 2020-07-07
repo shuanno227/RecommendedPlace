@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "/" => 'home#top'
+  devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'places#index'
   resources :places
+  resources :users, only: [:index, :edit, :update]
 end
