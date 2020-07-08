@@ -1,16 +1,17 @@
 .SignIn {
   height: 100vh;
   width: 100%;
-  background-image: url("/topImage.jpg");
-  background-color:rgba(255,255,255,0.4);
+  background-image: url("/topImage6.jpg");
+  background-color:rgba(255,255,255,0);
   background-blend-mode:lighten;
   background-size: cover;
   display: flex;
   justify-content: center;
-  .AccountPage{
-    margin: auto 0;
-    background-color:rgba(255,255,255,0.8);
-    height: 500px;
+  .AccountPage-registration{
+    margin-top: 100px;
+    background-color:rgba(255,255,255,0.4);
+    border-radius: 10px;
+    height: 700px;
     width: 500px;
     &__title{
       .title{
@@ -20,25 +21,210 @@
         font-size: 40px;
         font-weight: bold;
         margin-top: 50px;
+        margin-bottom: 30px;
       }
     }
     .FormField{
       width: 450px;
       margin: 0 auto;
+      color: gray;
     }
     .actions{
       width: 450px;
       margin: 0 auto;
+      margin-top: 30px;
     }
     &__render{
       width: 450px;
+      display: flex;
       padding: 10px;
       margin: 0 auto;
-      border: 1px solid #57C3E9;
-      border-radius: 20px;
+      
+      justify-content: center;
       text-align: center;
+      .leftBtn{
+        .Signin{
+          width: 220px;
+          display: inline-block;
+          padding: 10px 40px;
+          border-radius: 20px;
+          margin-right: 10px;
+          background-color: rgba(109,109,109,0.3);
+          color: #ffffff;
+          letter-spacing: 4px;
+          z-index: 2;
+        }
+        .Signin:hover,
+        .Signin:active{
+          background-color: rgba(109,109,109,0.5);
+        }
+        .Signin:after{
+          width:100%;
+          height:0%;
+          border-radius:5px;
+          background-color:#FFF;
+          content:"";
+          position:absolute;
+          top:0;
+          left:0;
+          transition:all 0.3s;
+          z-index:-1;
+        }
+      }
+      .rightBtn{
+        .Home{
+          width: 220px;
+          display: inline-block;
+          padding: 10px 40px;
+          border-radius: 20px;
+          background-color: rgba(109,109,109,0.3);
+          color: #ffffff;
+          letter-spacing: 4px;
+          z-index: 2;
+        }
+        .Home:hover,
+        .Home:active{
+          background-color: rgba(109,109,109,0.5);
+        }
+        .Home:after{
+          width:100%;
+          height:0%;
+          border-radius:5px;
+          background-color:#FFF;
+          content:"";
+          position:absolute;
+          top:0;
+          left:0;
+          transition:all 0.3s;
+          z-index:-1;
+        }
+
+      }
+    }
+    .Button{
+      letter-spacing: 4px;
+      color: #ffffff;
+      background-color: rgba(146,174,204,0.6);
+    }
+  }
+
+  }
+  .AccountPage{
+    margin-top: 100px;
+    background-color:rgba(255,255,255,0.4);
+    border-radius: 10px;
+    height: 600px;
+    width: 500px;
+    &__title{
+      .title{
+        font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;
+        text-align: center;
+        color: gray;
+        font-size: 40px;
+        font-weight: bold;
+        margin-top: 50px;
+        margin-bottom: 30px;
+      }
+    }
+    .FormField{
+      width: 450px;
+      margin: 0 auto;
+      color: gray;
+    }
+    .actions{
+      width: 450px;
+      margin: 0 auto;
+      margin-top: 30px;
+      
+    }
+    &__render{
+      width: 450px;
+      display: flex;
+      padding: 10px;
+      margin: 0 auto;
+      justify-content: center;
+      text-align: center;
+      .leftBtn{
+        .Signin{
+          width: 220px;
+          display: inline-block;
+          padding: 10px 40px;
+          border-radius: 20px;
+          margin-right: 10px;
+          background-color: rgba(109,109,109,0.3);
+          color: #ffffff;
+          letter-spacing: 4px;
+          z-index: 2;
+        }
+        .Signin:hover,
+        .Signin:active{
+          background-color: rgba(109,109,109,0.5);
+        }
+        .Signin:after{
+          width:100%;
+          height:0%;
+          border-radius:5px;
+          background-color:#FFF;
+          content:"";
+          position:absolute;
+          top:0;
+          left:0;
+          transition:all 0.3s;
+          z-index:-1;
+        }
+      }
+      .rightBtn{
+        .Home{
+          width: 220px;
+          display: inline-block;
+          padding: 10px 40px;
+          border-radius: 20px;
+          background-color: rgba(109,109,109,0.3);
+          color: #ffffff;
+          letter-spacing: 4px;
+          z-index: 2;
+        }
+        .Home:hover,
+        .Home:active{
+          background-color: rgba(109,109,109,0.5);
+        }
+        .Home:after{
+          width:100%;
+          height:0%;
+          border-radius:5px;
+          background-color:#FFF;
+          content:"";
+          position:absolute;
+          top:0;
+          left:0;
+          transition:all 0.3s;
+          z-index:-1;
+        }
+
+      }
+    }
+    .Button{
+      letter-spacing: 4px;
+      color: #ffffff;
+      background-color: rgba(146,174,204,0.6);
+      z-index: 2;
+      .Button:hover,
+      .Button:active{
+        background-color: rgba(146,174,204,0.6);
+      }
+      .Signin:after{
+        width:100%;
+        height:0%;
+        border-radius:5px;
+        background-color: rgba(146,174,204,0.6);
+        content:"";
+        position:absolute;
+        top:0;
+        left:0;
+        transition:all 0.3s;
+        z-index:-1;
+      }
     }
   }
 
 
-}

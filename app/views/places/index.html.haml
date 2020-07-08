@@ -1,3 +1,19 @@
+
+
+%header.header
+  .header__bar.row
+    .leftHeader
+      %h1.grid-6
+        %a.post.Home{:href => "/"} HOME
+    .rightHeader  
+      - if user_signed_in?
+        .user_nav.grid-6
+          = link_to "ログアウト", destroy_user_session_path, class: "post Logout", method: :delete
+          = link_to  "地点追加", new_place_path, class: "post AddPlace"
+      - else
+        .grid-6
+          = link_to "ログイン", new_user_session_path, class: "post Login"
+          = link_to "新規登録", new_user_registration_path, class: "post Signup"
 %p#notice= notice
 %h1 Places
 %table

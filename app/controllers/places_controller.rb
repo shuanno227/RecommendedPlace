@@ -1,10 +1,11 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-  before_action :move_to_index, except: [:index, :show]
+  # before_action :move_to_index, except: [:index, :show]
   # GET /places
   # GET /places.json
   def index
-     @places = Place.includes(:user)
+     places = Place.includes(:user)
+     @places = current_user.places
   end
 
   # GET /places/1
@@ -92,7 +93,7 @@ class PlacesController < ApplicationController
       params.require(:place).permit(:name, :description, :latitude, :longitude).merge(user_id: current_user.id)
     end
 
-    def move_to_index
-      redirect_to action: :index unless user_signed_in?
-    end
+    # def move_to_index
+    #   redirect_to action: :index unless user_signed_in?
+    # end
 end

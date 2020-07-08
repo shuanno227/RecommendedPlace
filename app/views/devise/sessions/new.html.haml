@@ -1,14 +1,8 @@
 
-.SignIn
-  .Header
-
-    .leftHeader
-      %h1.grid-6
-        %a.post.Home{:href => "/",data: {"turbolinks" => false}} HOME
+.SignIn 
   .AccountPage
     .AccountPage__title
-      %h2.title SIGN IN
-      
+      %h2.title SIGN IN  
     .AccountPage__form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .FormField
@@ -23,7 +17,9 @@
           .FormField__input--normal
             = f.password_field :password, autocomplete: "off", size: 60
         .actions
-          = f.submit "Log in", class: 'Button UserButton'
+          = f.submit "SIGN IN", class: 'Button UserButton'
     .AccountPage__render
-      = render "devise/shared/links"
-      
+      .leftBtn
+        = link_to "SIGN UP", new_user_registration_path, class: "Btn Signin UserButton"
+      .rightBtn
+        = link_to "HOME", root_path, class: "Btn Home"
