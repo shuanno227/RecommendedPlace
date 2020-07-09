@@ -1,3 +1,8 @@
-%h1 New Place
-= render 'form', place: @place
-= link_to 'Back', places_path
+.New
+  .New__Top
+    .Form__Content
+      .FormField
+        %h1.title New Place
+        = render 'form', place: @place
+  .New__Bottom
+    = link_to 'Back', places_path, class: "Back"

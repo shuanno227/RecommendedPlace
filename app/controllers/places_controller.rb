@@ -49,7 +49,7 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to action: :index, notice: 'Place was successfully created.' }
+        format.html { redirect_to "/places", notice: 'Place was successfully created.' }
         format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new }
@@ -63,7 +63,7 @@ class PlacesController < ApplicationController
   def update
     respond_to do |format|
       if @place.update(place_params)
-        format.html { redirect_to @place, notice: 'Place was successfully updated.' }
+        format.html { redirect_to "/places", notice: 'Place was successfully updated.' }
         format.json { render :show, status: :ok, location: @place }
       else
         format.html { render :edit }
@@ -90,7 +90,7 @@ class PlacesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def place_params
-      params.require(:place).permit(:name, :description, :latitude, :longitude).merge(user_id: current_user.id)
+      params.require(:place).permit(:name, :description, :latitude, :longitude, :image).merge(user_id: current_user.id)
     end
 
     # def move_to_index

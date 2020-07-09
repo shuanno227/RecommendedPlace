@@ -8,10 +8,23 @@
         - place.errors.full_messages.each do |message|
           %li= message
   .field
-    = form.label :name
+    = form.label :image, class: "subtitle"
+    .form
+      - if place.image.present?
+        = form.text_field :text, value: place.image, class: 'text'
+        = form.label :image, 'Add Image', class: 'icon' do
+          = icon('far', 'image')
+          = form.file_field :image, class: 'Hidden'
+      - else 
+        = form.text_field :text, placeholder: 'Add Image', class: 'text'
+        = form.label :image, 'Add Image', class: 'icon' do
+          = icon('far', 'image')
+          = form.file_field :image, class: 'Hidden'
+  .field
+    = form.label :name, class: "subtitle"
     = form.text_field :name
   .field
-    = form.label :description
+    = form.label :description, class: "subtitle"
     = form.text_field :description
   .actions
-    = form.submit
+    = form.submit class: "Update"

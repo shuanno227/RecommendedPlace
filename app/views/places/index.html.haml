@@ -1,10 +1,12 @@
 
-
-%header.header
-  .header__bar.row
+.Index
+  %header.header
+   
     .leftHeader
       %h1.grid-6
-        %a.post.Home{:href => "/"} HOME
+        %a.post.Home{:href => "/"}
+          %span きっとみつかる、あなたの行きたい 
+          %br.title Favo Map
     .rightHeader  
       - if user_signed_in?
         .user_nav.grid-6
@@ -14,23 +16,46 @@
         .grid-6
           = link_to "ログイン", new_user_session_path, class: "post Login"
           = link_to "新規登録", new_user_registration_path, class: "post Signup"
-%p#notice= notice
-%h1 Places
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Latitude
-      %th Longitude
-      %th{:colspan => "3"}
-  %tbody
-    - @places.each do |place|
-      %tr
-        %td= place.name
-        %td= place.description
-        %td= place.latitude
-        %td= place.longitude
-        %td= link_to 'Show', place
-        %td= link_to 'Edit', edit_place_path(place)
-        %td= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' }
+  %p#notice= notice
+
+  .Index__Content
+    %h1.title Places
+    .boxes
+      
+      -@places.each do |place|
+        .box
+          .box__image
+            = image_tag place.image.url, class: "image-cover" if place.image.present?
+          .box__content
+            .box__content--link
+              = link_to 'Show', place
+              = link_to 'Edit', edit_place_path(place)
+            .box__content--contents
+              .contentsName
+                Place：
+                = place.name
+              .contentsDescription  
+                Description：
+                %br
+                = place.description
+    -# %table.PlaceIndex
+    -#   %thead
+    -#     %tr
+    -#       %th Name
+    -#       %th Description
+    -#       %th Latitude
+    -#       %th Longitude
+    -#       %th{:colspan => "3"}
+    -#   %tbody.boxes
+    -#     - @places.each do |place|
+    -#       %tr.box
+    -#         .box__image
+    -#         .box__content
+    -#         %td= place.name
+    -#         %td= place.description
+    -#         %td= place.latitude
+    -#         %td= place.longitude
+    -#         %td= link_to 'Show', place
+    -#         %td= link_to 'Edit', edit_place_path(place)
+    -#         %td= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' }
+            
