@@ -1,61 +1,396 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @place.name
-%p
-  %strong Description:
-  = @place.description
-%p
-  %strong Latitude:
-  = @place.latitude
-%p
-  %strong Longitude:
-  = @place.longitude
-= link_to 'Edit', edit_place_path(@place)
-|
-= link_to 'Back', places_path, data: {"turbolinks" => false}
-
-
-
-
-
 %head
-  :css
-    #gmap1, #gmap2, #gmap3 {
-      height: 400px;
-      width: 800px;
-    }
+ 
+.Show
+  %header.header
+    .leftHeader
+    .centerHeader
+      %h1.grid-6
+        %a.post.Home{:href => "/"}
+          %span きっとみつかる、あなたの行きたい 
+          %br.title Favo Map
+    .rightHeader  
+      - if user_signed_in?
+        .user_nav.grid-6
+          = link_to(content_tag(:div, 'Sign Out', class: 'text'),   destroy_user_session_path, class: "post Logout", method: :delete )
+          = link_to(content_tag(:div, 'New Place', class: 'text'), new_place_path, class: "post AddPlace")
+  .PlaceHeader
+    %p#notice= notice
+    .PlaceHeader__content
+      .OuterFrame
+        .InnerFrame
+          .Name
+            From
+            = @place.name
+          .Description
+            = @place.description
     
-%body
-  %p.gmapTitle1 １番目に近い地点
-  %p.gmapTitle1 １番目に近い地点
-  .gamp1#gmap1
-  %p.gmapTitle2 2番目に近い地点
-  .gmap2#gmap2
-  %p.gmapTitle3 3番目に近い地点
-  .gmap3#gmap3
+
+  .PlaceContent
+    .PlaceContent__box
+      .gmap1#gmap1
+      .mapInfo
+        %i.fas.fa-map-marker-alt.gmapTitle1 01
+        %p#arrive1.goalName
+        %p#description1.goalDescription
+    .PlaceContent__box
+      .mapInfo
+        %i.fas.fa-map-marker-alt.gmapTitle2 02
+        %p#arrive2.goalName
+        %p#description2.goalDescription
+      .gmap2#gmap2
+    .PlaceContent__box
+      .gmap3#gmap3
+      .mapInfo
+        %i.fas.fa-map-marker-alt.gmapTitle3 03
+        %p#arrive3.goalName
+        %p#description3.goalDescription
+  .PlaceFooter
+    = link_to 'Page Back', places_path, data: {"turbolinks" => false}, class: "pageback"
+
   / 地図を表示する領域
   :javascript
     function initMap() { 
       // 地図を生成して表示
-      var map1 = new google.maps.Map(document.getElementById("gmap1"), {
+      var opts = {
         zoom: 13,
         center: new google.maps.LatLng(gon.lat, gon.lng),  //Madison Av/E 38 St
-        mapTypeId: "roadmap"
-        
-      });
-      var map2 = new google.maps.Map(document.getElementById("gmap2"), {
-        zoom: 13,
-        center: new google.maps.LatLng(gon.lat, gon.lng),  //Madison Av/E 38 St
-        mapTypeId: "roadmap"
-        
-      });
-      var map3 = new google.maps.Map(document.getElementById("gmap3"), {
-        zoom: 13,
-        center: new google.maps.LatLng(gon.lat, gon.lng),  //Madison Av/E 38 St
-        mapTypeId: "roadmap"
-        
-      });
+        mapTypeId: "roadmap",
+        styles: [
+                    
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#444444"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.locality",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#f2f2f2"
+                            },
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            },
+                            {
+                                "saturation": "-65"
+                            },
+                            {
+                                "lightness": "45"
+                            },
+                            {
+                                "gamma": "1.78"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "saturation": -100
+                            },
+                            {
+                                "lightness": 45
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.line",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "saturation": "-33"
+                            },
+                            {
+                                "lightness": "22"
+                            },
+                            {
+                                "gamma": "2.08"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station.airport",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "gamma": "2.08"
+                            },
+                            {
+                                "hue": "#ffa200"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station.airport",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station.rail",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station.rail",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            },
+                            {
+                                "saturation": "-55"
+                            },
+                            {
+                                "lightness": "-2"
+                            },
+                            {
+                                "gamma": "1.88"
+                            },
+                            {
+                                "hue": "#ffab00"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#bbd9e5"
+                            },
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    }
+
+                ]
+
+      };
+      var map1 = new google.maps.Map(document.getElementById("gmap1"), opts);
+      var map2 = new google.maps.Map(document.getElementById("gmap2"), opts);
+      var map3 = new google.maps.Map(document.getElementById("gmap3"), opts);
       
       //DirectionsService のオブジェクトを生成
       var directionsService1 = new google.maps.DirectionsService();
@@ -74,6 +409,8 @@
       //リクエストの終着点の位置（Grand Central Station 到着地点の緯度経度）
       
       
+      
+      
       var ends = new Array;
       ends = [];
       var distanceOrigin = new Array;
@@ -90,8 +427,9 @@
         distanceClone[j] = google.maps.geometry.spherical.computeDistanceBetween(start, ends[j]);
         if (distanceOrigin[j] === Math.min.apply(null, distanceOrigin)) {
           var end1 = ends[j];
-          var goalName1 = gon.places[j].name
-          startName = gon.place.name
+          var goalDescription1 = gon.places[j].description;
+          var goalName1 = gon.places[j].name;
+          startName = gon.place.name;
         }
       } 
       function compare(a, b){
@@ -111,14 +449,32 @@
       for (var i = 0; i < gon.lats.length; i++) {
         if (distanceOrigin[i] === distanceEdit[1]) {
           var end2 = ends[i];
+          var goalDescription2 = gon.places[i].description;
           var goalName2 = gon.places[i].name;
         }
         if (distanceOrigin[i] === distanceEdit[2]) {
           var end3 = ends[i];
+          var goalDescription3 = gon.places[i].description;
           var goalName3 = gon.places[i].name;
         }
         
       }
+
+      // javascriptで選出した３点の到着地点の名前をHTMLで表示するためinnerHTMLプロパティを用いて定義する
+      var name1 = document.getElementById("arrive1");
+      var name2 = document.getElementById("arrive2");
+      var name3 = document.getElementById("arrive3");
+      name1.innerHTML = goalName1;
+      name2.innerHTML = goalName2;
+      name3.innerHTML = goalName3;
+      // javascriptで選出した３点の到着地点の説明文をHTMLで表示するためinnerHTMLプロパティを用いて定義する
+      var description1 = document.getElementById("description1");
+      var description2 = document.getElementById("description2");
+      var description3 = document.getElementById("description3");
+      description1.innerHTML = goalDescription1;
+      description2.innerHTML = goalDescription2;
+      description3.innerHTML = goalDescription3;
+
       var Start_infowindow1 = new google.maps.InfoWindow({
         content: startName,
         position: start
@@ -160,7 +516,8 @@
         destination: end3,   // 到着地点の緯度経度
         travelMode: 'WALKING' //トラベルモード（歩き）
       };
-
+      
+      
       //DirectionsService のオブジェクトのメソッド route() にリクエストを渡し、
       //コールバック関数で結果を setDirections(result) で directionsRenderer にセットして表示
       directionsService1.route(request1, function(result, status) {
@@ -201,5 +558,4 @@
    
   %script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyAU8Lqc8zivL85a3FicZriuI5a_J8II3fA&callback=initMap&libraries=geometry"}
   
-  / YOUR_API_KEYの部分は取得した APIキーで置き換えます。
-
+  

@@ -4,8 +4,14 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-     places = Place.includes(:user)
-     @places = current_user.places
+    if params[:name_key]
+      @places = Place.where('name LIKE?', "%#{params[:name_key]}%").includes(:user).order("created_at DESC")
+      # @places = current_user.places
+
+    else
+      places = Place.includes(:user)
+      @places = current_user.places.order("created_at DESC")
+    end
   end
 
   # GET /places/1
@@ -75,12 +81,15 @@ class PlacesController < ApplicationController
   # DELETE /places/1
   # DELETE /places/1.json
   def destroy
+    @place = Place.find(params[:id])
     @place.destroy
     respond_to do |format|
       format.html { redirect_to places_url, notice: 'Place was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,8 +1,7 @@
-
 .Index
   %header.header
-   
     .leftHeader
+    .centerHeader
       %h1.grid-6
         %a.post.Home{:href => "/"}
           %span きっとみつかる、あなたの行きたい 
@@ -10,52 +9,50 @@
     .rightHeader  
       - if user_signed_in?
         .user_nav.grid-6
-          = link_to "ログアウト", destroy_user_session_path, class: "post Logout", method: :delete
-          = link_to  "地点追加", new_place_path, class: "post AddPlace"
-      - else
-        .grid-6
-          = link_to "ログイン", new_user_session_path, class: "post Login"
-          = link_to "新規登録", new_user_registration_path, class: "post Signup"
+          = link_to(content_tag(:div, 'Sign Out', class: 'text'),   destroy_user_session_path, class: "post Logout", method: :delete )
+          = link_to(content_tag(:div, 'New Place', class: 'text'), new_place_path, class: "post AddPlace")
+     
   %p#notice= notice
 
   .Index__Content
-    %h1.title Places
+    .IndexTop
+      %h1.title Your Places
     .boxes
-      
-      -@places.each do |place|
+      .boxes__search
+        = form_with(url: '/places', local: true, method: :get, class: "search-form") do |form|
+          = form.text_field :name_key, placeholder: "どこから向かう？", class: "search-input"
+          = form.submit "Search", class: "searchBtn"
+          = link_to 'Clear', places_path, class: "clearBtn"
+  
+      .boxes__content
         .box
           .box__image
-            = image_tag place.image.url, class: "image-cover" if place.image.present?
-          .box__content
-            .box__content--link
-              = link_to 'Show', place
-              = link_to 'Edit', edit_place_path(place)
-            .box__content--contents
-              .contentsName
-                Place：
-                = place.name
-              .contentsDescription  
-                Description：
-                %br
-                = place.description
-    -# %table.PlaceIndex
-    -#   %thead
-    -#     %tr
-    -#       %th Name
-    -#       %th Description
-    -#       %th Latitude
-    -#       %th Longitude
-    -#       %th{:colspan => "3"}
-    -#   %tbody.boxes
-    -#     - @places.each do |place|
-    -#       %tr.box
-    -#         .box__image
-    -#         .box__content
-    -#         %td= place.name
-    -#         %td= place.description
-    -#         %td= place.latitude
-    -#         %td= place.longitude
-    -#         %td= link_to 'Show', place
-    -#         %td= link_to 'Edit', edit_place_path(place)
-    -#         %td= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' }
-            
+            = link_to(content_tag(:i, '　From Your Location', class: 'fa fa-map-marker-alt'), '/current_place/current', class: "link-current")
+        -@places.each do |place|
+          .box
+            .box__image
+              = image_tag place.image.url, class: "image-cover" if place.image.present?
+              .mask
+                .caption
+                  .search
+                    = link_to(content_tag(:i, '', class: 'fa fa-search'), place, class: "link-search")
+                  .edit  
+                    = link_to(content_tag(:i, '', class: 'fa fa-cog'), edit_place_path(place), class: "link-edit")
+                  .destroy
+                    = link_to(content_tag(:i, '', class: 'fa fa-trash'), place, method: :delete, data: { cofirm: 'Are you sure?'}, class: "link-destroy")  
+            .box__content
+              .box__content--contents
+                .contentsName
+                  = place.name
+                .contentsDescription  
+                  = place.description
+    .PageTop_area
+      = link_to "PAGE TOP", '' ,class: "pagetop" 
+
+
+:javascript
+  $(".PAGE TOP").click(
+    function(){
+      $(".Index").animate({scrollTop:0},"slow");
+    }
+  );

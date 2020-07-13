@@ -7,11 +7,11 @@
     display: flex;
     justify-content: center;
     background-color:rgba(0,40,70,0.5);
-    height: 90%;
+    height: calc(100vh - 10%);
     .Form__Content{
-      margin-top: 200px;
+      padding-top: 200px;
+      height: 100%;
       width: 500px;
-      
       .FormField{
         width: 450px;
         margin: 0 auto;
@@ -82,11 +82,11 @@
       font-size: 20px;
       padding-top: 30px;
       z-index: 2;
-      background-color: rgba(192, 215, 210, 0.6);
+      background-color: rgba(155, 214, 201, 0.7);
     }
     .Back:hover,
     .Back:active{
-      background-color: rgba(169, 212, 203, 0.8);
+      background-color: rgba(155, 214, 201, 0.9);
     }
     .Back:after{
       width:100%;
@@ -188,11 +188,11 @@
       font-size: 20px;
       padding-top: 30px;
       z-index: 2;
-      background-color: rgba(192, 215, 210, 0.6);
+      background-color: rgba(155, 214, 201, 0.7);
     }
     .Back:hover,
     .Back:active{
-      background-color: rgba(169, 212, 203, 0.8);
+      background-color: rgba(155, 214, 201, 0.9);
     }
     .Back:after{
       width:100%;
