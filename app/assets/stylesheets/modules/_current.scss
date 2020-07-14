@@ -1,4 +1,7 @@
 .Current{
+  font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;
+  background-color: rgba(231, 219, 193, 0.4);
+  margin-top: 130px;
   .header{
     height: 130px;
     width: 100vw;
@@ -39,16 +42,152 @@
             text-align: center;
             width: 80%;
             height: 100%;
-            .text{
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              height: 100%;
-              font-size: 15px;
-            }
+            
+          }
+          .text{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 15px;
           }
         }
       }
   
+  }
+  .PlaceHeader{
+    height: 780px;
+    width: 100%;
+    margin: 0 auto;
+    background-image: url('/topImage12.jpg');
+    background-color:rgba(255,255,255,0.3);
+    background-blend-mode:lighten;
+    background-size: cover;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    &__content{
+      .OuterFrame{
+        background-color:rgba(255,255,255,0.3);
+        border-radius: 10px;
+        height: 200px;
+        width: 800px;
+        margin-top: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .InnerFrame{
+          background-color:rgba(255,255,255,0.8);
+          border-radius: 10px;
+          height: 180px;
+          width: 780px;
+          
+          .Name{
+            font-size: 30px;
+            letter-spacing: 7px;
+            color: gray;
+            text-align: center;
+            margin-top: 70px;
+          }
+        }
+      }
+    }
+  }
+  .PlaceContent{
+    height: 900%;
+    width: 80%;
+    
+    margin: 0 auto;
+    &__box{
+      height: 500px;
+      width: 100%;
+      margin-top: 200px;
+      margin-bottom: 200px;
+      padding: 20px;
+      border-radius: 20px;
+      display: flex;
+      background-color: #ffffff;
+      .gmap1,
+      .gmap2,
+      .gmap3{
+        height: 100%;
+        width: 60%;
+        border-radius: 10px;
+      } 
+      .mapInfo{
+        width: 40%;
+        height: 100%;
+        padding: 60px 20px;
+        .gmapTitle1,
+        .gmapTitle2,
+        .gmapTitle3{
+          text-align: center;
+          font-size: 32px;
+          font-weight: bold;
+          height: 30%;
+          width: 100%;
+        }
+        .goalName{
+          text-align: center;
+          font-size: 25px;
+          height: 20%;
+        }
+        .goalDescription{
+          text-align: center;
+          font-size: 18px;
+          height: 30%;
+        }
+        .information{
+          height: 20%;
+          display: flex;
+          justify-content: center;
+          &__content{
+            .time{
+              display: flex;
+              letter-spacing: 5px;
+            }
+            .distance{
+              display: flex;
+              letter-spacing: 5px;
+            }
+          }
+        }
+      }
+      
+    }
+  }
+  .PlaceFooter{
+    display: inline-block;
+    width: 100%;
+    height: 80px;
+    .pageback{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      font-size: 20px;
+      letter-spacing: 5px;
+      color: #ffffff;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(112,151,195,0.55);
+      z-index: 2;
+    }
+    .pageback:hover,
+    .pageback:active{
+      background-color: rgba(112,151,195,0.8);
+    }
+    .pageback:after{
+      width:100%;
+      height:0%;
+      border-radius:5px;
+      background-color:#FFF;
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      transition:all 0.3s;
+      z-index:-1;
+    }
   }
 }

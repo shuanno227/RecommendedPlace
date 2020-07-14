@@ -4,10 +4,9 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-    if params[:name_key]
-      @places = Place.where('name LIKE?', "%#{params[:name_key]}%").includes(:user).order("created_at DESC")
+    if params[:key]
+      @places = Place.where('name LIKE? OR description LIKE?', "%#{params[:key]}%", "%#{params[:key]}%").includes(:user).order("created_at DESC")
       # @places = current_user.places
-
     else
       places = Place.includes(:user)
       @places = current_user.places.order("created_at DESC")

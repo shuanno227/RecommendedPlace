@@ -10,27 +10,66 @@
       - if user_signed_in?
         .user_nav.grid-6
           = link_to(content_tag(:div, 'Sign Out', class: 'text'),   destroy_user_session_path, class: "post Logout", method: :delete )
-          = link_to(content_tag(:div, 'New Place', class: 'text'), new_place_path, class: "post AddPlace")
-     
+          = link_to 'Page Back', places_path, data: {"turbolinks" => false}, class: "post text"
+
+  .PlaceHeader
+    %p#notice= notice
+    .PlaceHeader__content
+      .OuterFrame
+        .InnerFrame
+          .Name
+            From Your Location
 
   .PlaceContent
     .PlaceContent__box
-      .gamp1#gmap1
-      %p.gmapTitle1 １番目に近い地点
+      .gmap1#gmap1
+      .mapInfo
+        %i.fas.fa-map-marker-alt.gmapTitle1 
+          %span 01
+        %p#arrive1.goalName
+        %p#description1.goalDescription
+        .information
+          .information__content
+            .time
+              %p 所要時間：
+              %p#time1
+            .distance
+              %p 移動距離：
+              %p#distance1
     .PlaceContent__box
+      .mapInfo
+        %i.fas.fa-map-marker-alt.gmapTitle2 
+          %span 02
+        %p#arrive2.goalName
+        %p#description2.goalDescription
+        .information
+          .information__content
+            .time
+              %p 所要時間：
+              %p#time2
+            .distance
+              %p 移動距離：
+              %p#distance2
       .gmap2#gmap2
-      %p.gmapTitle2 2番目に近い地点
     .PlaceContent__box
       .gmap3#gmap3
-      %p.gmapTitle3 3番目に近い地点
-
+      .mapInfo
+        %i.fas.fa-map-marker-alt.gmapTitle3 
+          %span 03
+        %p#arrive3.goalName
+        %p#description3.goalDescription
+        .information
+          .information__content
+            .time
+              %p 所要時間：
+              %p#time3
+            .distance
+              %p 移動距離：
+              %p#distance3
   .PlaceFooter
-  = link_to 'Page Back', places_path, data: {"turbolinks" => false}, class: "pageback"
-:css
-    #gmap1, #gmap2, #gmap3 {
-      height: 500px;
-      width: 600px;
-    }
+    = link_to 'Page Back', places_path, data: {"turbolinks" => false}, class: "pageback"
+  
+
 :javascript
   function initMap() { 
     // 地図を生成して表示
@@ -38,6 +77,338 @@
         zoom: 13,
         center: new google.maps.LatLng(36, 139),  //Madison Av/E 38 St
         mapTypeId: "roadmap",
+        styles: [
+                    
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#444444"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.locality",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#f2f2f2"
+                            },
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            },
+                            {
+                                "saturation": "-65"
+                            },
+                            {
+                                "lightness": "45"
+                            },
+                            {
+                                "gamma": "1.78"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "saturation": -100
+                            },
+                            {
+                                "lightness": 45
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.line",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "saturation": "-33"
+                            },
+                            {
+                                "lightness": "22"
+                            },
+                            {
+                                "gamma": "2.08"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station.airport",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "gamma": "2.08"
+                            },
+                            {
+                                "hue": "#ffa200"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station.airport",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station.rail",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station.rail",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            },
+                            {
+                                "saturation": "-55"
+                            },
+                            {
+                                "lightness": "-2"
+                            },
+                            {
+                                "gamma": "1.88"
+                            },
+                            {
+                                "hue": "#ffab00"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#bbd9e5"
+                            },
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    }
+
+                ]
+
     }
     var map1 = new google.maps.Map(document.getElementById("gmap1"), opts);
     var map2 = new google.maps.Map(document.getElementById("gmap2"), opts);
@@ -78,6 +449,7 @@
         distanceClone[j] = google.maps.geometry.spherical.computeDistanceBetween(start, ends[j]);
         if (distanceOrigin[j] === Math.min.apply(null, distanceOrigin)) {
           var end1 = ends[j];
+          var goalDescription1 = gon.places[j].description;
           var goalName1 = gon.places[j].name
           var startName = "現在地"
         }
@@ -99,14 +471,29 @@
       for (var i = 0; i < gon.lats.length; i++) {
         if (distanceOrigin[i] === distanceEdit[1]) {
           var end2 = ends[i];
+          var goalDescription2 = gon.places[i].description;
           var goalName2 = gon.places[i].name;
         }
         if (distanceOrigin[i] === distanceEdit[2]) {
           var end3 = ends[i];
+          var goalDescription3 = gon.places[i].description;
           var goalName3 = gon.places[i].name;
         }
         
       }
+      var name1 = document.getElementById("arrive1");
+      var name2 = document.getElementById("arrive2");
+      var name3 = document.getElementById("arrive3");
+      name1.innerHTML = goalName1;
+      name2.innerHTML = goalName2;
+      name3.innerHTML = goalName3;
+      // javascriptで選出した３点の到着地点の説明文をHTMLで表示するためinnerHTMLプロパティを用いて定義する
+      var description1 = document.getElementById("description1");
+      var description2 = document.getElementById("description2");
+      var description3 = document.getElementById("description3");
+      description1.innerHTML = goalDescription1;
+      description2.innerHTML = goalDescription2;
+      description3.innerHTML = goalDescription3;
 
       var Start_infowindow1 = new google.maps.InfoWindow({
         content: startName,
@@ -157,8 +544,18 @@
           directionsRenderer1.setDirections(result); //取得したルート（結果：result）をセット
           Start_infowindow1.open(map1);
           End_infowindow1.open(map1);
+          var results = result.routes;
+          var results_legs = results[0].legs;
+          var legs_duration = results_legs[0].duration;
+          var time = legs_duration.text;
+          var legs_distance = results_legs[0].distance;
+          var distance = legs_distance.text;
+          var time1 = document.getElementById("time1");
+          time1.innerHTML = time;
+          var distance1 = document.getElementById("distance1");
+          distance1.innerHTML = distance;
         }else{
-          alert("取得できませんでした：" + status);
+          alert("編集画面を開きName欄に住所を入力してみてください");
         }
       });
       directionsService2.route(request2, function(result, status) {
@@ -167,8 +564,18 @@
           directionsRenderer2.setDirections(result); //取得したルート（結果：result）をセット
           Start_infowindow2.open(map2);
           End_infowindow2.open(map2);
+          var results = result.routes;
+          var results_legs = results[0].legs;
+          var legs_duration = results_legs[0].duration;
+          var time = legs_duration.text;
+          var legs_distance = results_legs[0].distance;
+          var distance = legs_distance.text;
+          var time2 = document.getElementById("time2");
+          time2.innerHTML = time;
+          var distance2 = document.getElementById("distance2");
+          distance2.innerHTML = distance;
         }else{
-          alert("取得できませんでした：" + status);
+          alert("編集画面を開きName欄に住所を入力してみてください");
         }
       });
       directionsService3.route(request3, function(result, status) {
@@ -177,8 +584,18 @@
           directionsRenderer3.setDirections(result); //取得したルート（結果：result）をセット
           Start_infowindow3.open(map3);
           End_infowindow3.open(map3);
+          var results = result.routes;
+          var results_legs = results[0].legs;
+          var legs_duration = results_legs[0].duration;
+          var time = legs_duration.text;
+          var legs_distance = results_legs[0].distance;
+          var distance = legs_distance.text;
+          var time3 = document.getElementById("time3");
+          time3.innerHTML = time;
+          var distance3 = document.getElementById("distance3");
+          distance3.innerHTML = distance;
         }else{
-          alert("取得できませんでした：" + status);
+          alert("編集画面を開きName欄に住所を入力してみてください");
         }
       });
    

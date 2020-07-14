@@ -20,7 +20,7 @@
     .boxes
       .boxes__search
         = form_with(url: '/places', local: true, method: :get, class: "search-form") do |form|
-          = form.text_field :name_key, placeholder: "どこから向かう？", class: "search-input"
+          = form.text_field :key, placeholder: "どこから向かう？", class: "search-input"
           = form.submit "Search", class: "searchBtn"
           = link_to 'Clear', places_path, class: "clearBtn"
   

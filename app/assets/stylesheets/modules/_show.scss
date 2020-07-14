@@ -42,13 +42,14 @@
             text-align: center;
             width: 80%;
             height: 100%;
-            .text{
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              height: 100%;
-              font-size: 15px;
-            }
+            
+          }
+          .text{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 15px;
           }
         }
       }
@@ -136,12 +137,27 @@
         .goalName{
           text-align: center;
           font-size: 25px;
-          height: 30%;
+          height: 20%;
         }
         .goalDescription{
           text-align: center;
           font-size: 18px;
-          height: 40%;
+          height: 30%;
+        }
+        .information{
+          height: 20%;
+          display: flex;
+          justify-content: center;
+          &__content{
+            .time{
+              display: flex;
+              letter-spacing: 5px;
+            }
+            .distance{
+              display: flex;
+              letter-spacing: 5px;
+            }
+          }
         }
       }
       

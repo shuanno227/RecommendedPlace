@@ -12,7 +12,7 @@
       - if user_signed_in?
         .user_nav.grid-6
           = link_to(content_tag(:div, 'Sign Out', class: 'text'),   destroy_user_session_path, class: "post Logout", method: :delete )
-          = link_to(content_tag(:div, 'New Place', class: 'text'), new_place_path, class: "post AddPlace")
+          = link_to 'Page Back', places_path, data: {"turbolinks" => false}, class: "post text"
   .PlaceHeader
     %p#notice= notice
     .PlaceHeader__content
@@ -24,26 +24,52 @@
           .Description
             = @place.description
     
-
   .PlaceContent
     .PlaceContent__box
       .gmap1#gmap1
       .mapInfo
-        %i.fas.fa-map-marker-alt.gmapTitle1 01
+        %i.fas.fa-map-marker-alt.gmapTitle1 
+          %span 01
         %p#arrive1.goalName
         %p#description1.goalDescription
+        .information
+          .information__content
+            .time
+              %p 所要時間：
+              %p#time1
+            .distance
+              %p 移動距離：
+              %p#distance1
     .PlaceContent__box
       .mapInfo
-        %i.fas.fa-map-marker-alt.gmapTitle2 02
+        %i.fas.fa-map-marker-alt.gmapTitle2 
+          %span 02
         %p#arrive2.goalName
         %p#description2.goalDescription
+        .information
+          .information__content
+            .time
+              %p 所要時間：
+              %p#time2
+            .distance
+              %p 移動距離：
+              %p#distance2
       .gmap2#gmap2
     .PlaceContent__box
       .gmap3#gmap3
       .mapInfo
-        %i.fas.fa-map-marker-alt.gmapTitle3 03
+        %i.fas.fa-map-marker-alt.gmapTitle3 
+          %span 03
         %p#arrive3.goalName
         %p#description3.goalDescription
+        .information
+          .information__content
+            .time
+              %p 所要時間：
+              %p#time3
+            .distance
+              %p 移動距離：
+              %p#distance3
   .PlaceFooter
     = link_to 'Page Back', places_path, data: {"turbolinks" => false}, class: "pageback"
 
@@ -517,7 +543,7 @@
         travelMode: 'WALKING' //トラベルモード（歩き）
       };
       
-      
+    
       //DirectionsService のオブジェクトのメソッド route() にリクエストを渡し、
       //コールバック関数で結果を setDirections(result) で directionsRenderer にセットして表示
       directionsService1.route(request1, function(result, status) {
@@ -526,8 +552,18 @@
           directionsRenderer1.setDirections(result); //取得したルート（結果：result）をセット
           Start_infowindow1.open(map1);
           End_infowindow1.open(map1);
+          var results = result.routes;
+          var results_legs = results[0].legs;
+          var legs_duration = results_legs[0].duration;
+          var time = legs_duration.text;
+          var legs_distance = results_legs[0].distance;
+          var distance = legs_distance.text;
+          var time1 = document.getElementById("time1");
+          time1.innerHTML = time;
+          var distance1 = document.getElementById("distance1");
+          distance1.innerHTML = distance;
         }else{
-          alert("取得できませんでした：" + status);
+          alert("編集画面を開きName欄に住所を入力してみてください");
         }
       });
       directionsService2.route(request2, function(result, status) {
@@ -536,8 +572,18 @@
           directionsRenderer2.setDirections(result); //取得したルート（結果：result）をセット
           Start_infowindow2.open(map2);
           End_infowindow2.open(map2);
+          var results = result.routes;
+          var results_legs = results[0].legs;
+          var legs_duration = results_legs[0].duration;
+          var time = legs_duration.text;
+          var legs_distance = results_legs[0].distance;
+          var distance = legs_distance.text;
+          var time2 = document.getElementById("time2");
+          time2.innerHTML = time;
+          var distance2 = document.getElementById("distance2");
+          distance2.innerHTML = distance;
         }else{
-          alert("取得できませんでした：" + status);
+          alert("編集画面を開きName欄に住所を入力してみてください");
         }
       });
       directionsService3.route(request3, function(result, status) {
@@ -546,8 +592,18 @@
           directionsRenderer3.setDirections(result); //取得したルート（結果：result）をセット
           Start_infowindow3.open(map3);
           End_infowindow3.open(map3);
+          var results = result.routes;
+          var results_legs = results[0].legs;
+          var legs_duration = results_legs[0].duration;
+          var time = legs_duration.text;
+          var legs_distance = results_legs[0].distance;
+          var distance = legs_distance.text;
+          var time3 = document.getElementById("time3");
+          time3.innerHTML = time;
+          var distance3 = document.getElementById("distance3");
+          distance3.innerHTML = distance;
         }else{
-          alert("取得できませんでした：" + status);
+          alert("編集画面を開きName欄に住所を入力してみてください");
         }
       });
       
