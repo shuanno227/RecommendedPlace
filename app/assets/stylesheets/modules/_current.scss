@@ -191,3 +191,208 @@
     }
   }
 }
+////////////////////////////////////////////////////////////////////////
+@media (max-width: 670px) {
+  .Current{
+    font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;
+    background-color: rgba(231, 219, 193, 0.4);
+    margin-top: 130px;
+    .header{
+      height: 80px;
+      width: 100vw;
+      display: flex;
+      
+        .leftHeader{
+          width: 200px;
+          justify-content: start;
+        }
+        .centerHeader{
+          overflow: hidden;
+          justify-content: center;
+          .post{
+            display: inline-block;
+            text-align: center;
+            font-size: 15px;
+            margin-top: -10px;
+            span{
+              font-size: 8px;
+              display: none;
+            }
+            .title{
+              display: inline-block;
+              font-weight: 800;
+              box-sizing: border-box;
+              
+            }
+          }
+        }
+        .rightHeader{
+          display: flex;
+          width: 200px;
+          height: 80px;
+          margin-top: -10px;
+          margin-right: -10px;
+          justify-content: end;
+          .user_nav{
+            display: flex;
+            margin-left: 30px;
+            width: 70%;
+            height: 100%;
+            .post{
+              display: block;
+              align-items: center;
+              text-align: center;
+              width: 100%;
+              height: 100%;
+              
+            }
+            .text{
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+              font-size: 3px;
+            }
+          }
+        }
+      }
+      .PlaceHeader{
+        height: 180px;
+        width: 100%;
+        margin: 0 auto;
+        background-image: url('/topImage12.jpg');
+        background-color:rgba(255,255,255,0.3);
+        background-blend-mode:lighten;
+        background-size: cover;
+        margin-top: -50px;
+        display: flex;
+        justify-content: center;
+        &__content{
+          .OuterFrame{
+            background-color:rgba(255,255,255,0.3);
+            border-radius: 10px;
+            height: 60px;
+            width: 290px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .InnerFrame{
+              background-color:rgba(255,255,255,0.8);
+              border-radius: 10px;
+              height: 50px;
+              width: 280px;
+              
+              .Name{
+                font-size: 12px;
+                letter-spacing: 3px;
+                color: gray;
+                text-align: center;
+                margin-top: 20px;
+              }
+            }
+          }
+        }
+      }
+      .PlaceContent{
+        height: 900%;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: -185px;
+        &__box{
+          height: 450px;
+          width: 100%;
+          margin-bottom: 200px;
+          padding: 20px;
+          border-radius: 20px;
+          background-color: #ffffff;
+          display: block;
+          .gmap1,
+          .gmap2,
+          .gmap3{
+            display: block;
+            height: 70%;
+            width: 100%;
+            border-radius: 10px;
+          } 
+          .mapInfo{
+            display: block;
+            width: 100%;
+            height: 30%;
+            padding: 20px 20px;
+            .gmapTitle1,
+            .gmapTitle2,
+            .gmapTitle3{
+              text-align: center;
+              font-size: 15px;
+              font-weight: bold;
+              height: 30%;
+              width: 100%;
+            }
+            .goalName{
+              text-align: center;
+              font-size: 10px;
+              height: 20%;
+            }
+            .goalDescription{
+              text-align: center;
+              font-size: 10px;
+              height: 30%;
+            }
+            .information{
+              height: 20%;
+              display: flex;
+              justify-content: center;
+              &__content{
+                .time{
+                  display: flex;
+                  letter-spacing: 5px;
+                  font-size: 10px;
+                }
+                .distance{
+                  display: flex;
+                  letter-spacing: 5px;
+                  font-size: 10px;
+                }
+              }
+            }
+          }
+          
+        }
+      }
+      .PlaceFooter{
+        display: inline-block;
+        width: 100%;
+        height: 80px;
+        .pageback{
+          display: flex;
+          width: 100%;
+          height: 100%;
+          font-size: 20px;
+          letter-spacing: 5px;
+          color: #ffffff;
+          text-align: center;
+          align-items: center;
+          justify-content: center;
+          background-color: rgba(112,151,195,0.55);
+          z-index: 2;
+        }
+        .pageback:hover,
+        .pageback:active{
+          background-color: rgba(112,151,195,0.8);
+        }
+        .pageback:after{
+          width:100%;
+          height:0%;
+          border-radius:5px;
+          background-color:#FFF;
+          content:"";
+          position:absolute;
+          top:0;
+          left:0;
+          transition:all 0.3s;
+          z-index:-1;
+        }
+      } 
+    }
+}

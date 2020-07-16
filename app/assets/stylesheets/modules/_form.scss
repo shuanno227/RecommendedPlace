@@ -207,3 +207,218 @@
     }
   }
 }
+
+  ///////////////////////////////////////////////////////////////////////
+@media (max-width: 670px) {
+
+  .Edit{
+    background-image: url("/topImage7.jpg");
+    background-position: right 63% bottom 10%;
+    background-size: cover;
+    height: 100vh;
+    &__Top{
+      display: flex;
+      justify-content: center;
+      background-color:rgba(0,40,70,0.5);
+      height: calc(100vh - 10%);
+      .Form__Content{
+        padding-top: 80px;
+        height: 100%;
+        width: 300px;
+        .FormField{
+          width: 280px;
+          margin: 0 auto;
+          .subtitle{
+            color: #ffffff;
+          }
+          .title{
+            font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;
+            text-align: center;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 60px;
+            letter-spacing: 10px;
+          }
+          .form{
+            display: flex;
+            position: relative;
+            .icon{
+              position: absolute;
+              font-size: 30px;
+              right: 10px;
+              top: 10px;
+              .Hidden{
+                display: none;
+              }
+              
+            }
+            
+          }
+          .Update{
+            margin-top: 40px;
+            letter-spacing: 4px;
+            color: #ffffff;
+            background-color: rgba(112,151,195,0.6);
+            z-index: 2;
+          }
+          .Update:hover,
+          .Update:active{
+            background-color: rgba(112,151,195,0.9);
+          }
+          .Update:after{
+            width:100%;
+            height:0%;
+            border-radius:5px;
+            content:"";
+            position:absolute;
+            top:0;
+            left:0;
+            transition:all 0.3s;
+            z-index:-1;
+          }
+          
+        }
+      }
+    }
+    
+    &__Bottom{
+      
+      height: 10%;
+      display: flex;
+      justify-content: center;
+      .Back{
+        letter-spacing: 5px;
+        text-align: center;
+        width: 100%;
+        color: #ffffff;
+        font-size: 20px;
+        padding-top: 30px;
+        z-index: 2;
+        background-color: rgba(155, 214, 201, 0.7);
+      }
+      .Back:hover,
+      .Back:active{
+        background-color: rgba(155, 214, 201, 0.9);
+      }
+      .Back:after{
+        width:100%;
+        height:0%;
+        border-radius:5px;
+        content:"";
+        position:absolute;
+        top:0;
+        left:0;
+        transition:all 0.3s;
+        z-index:-1;
+      }
+    }
+  }
+  
+  
+  ///////////////////////////////////////////////////////////////////////////////////////
+  .New{
+    background-image: url("/topImage9.jpg");
+    
+    background-size: cover;
+    height: 100vh;
+    &__Top{
+      display: flex;
+      justify-content: center;
+      background-color:rgba(0,40,70,0.5);
+      height: 90%;
+      .Form__Content{
+        margin-top: 80px;
+        width: 300px;
+        
+        .FormField{
+          width: 280px;
+          margin: 0 auto;
+          .subtitle{
+            color: #ffffff;
+          }
+          .title{
+            font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;
+            text-align: center;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 60px;
+            letter-spacing: 10px;
+          }
+          .form{
+            display: flex;
+            position: relative;
+            .icon{
+              position: absolute;
+              font-size: 30px;
+              right: 10px;
+              top: 10px;
+              .Hidden{
+                display: none;
+              }
+              
+            }
+            
+          }
+          .Update{
+            margin-top: 40px;
+            letter-spacing: 4px;
+            color: #ffffff;
+            background-color: rgba(112,151,195,0.6);
+            z-index: 2;
+          }
+          .Update:hover,
+          .Update:active{
+            background-color: rgba(112,151,195,0.9);
+          }
+          .Update:after{
+            width:100%;
+            height:0%;
+            border-radius:5px;
+            content:"";
+            position:absolute;
+            top:0;
+            left:0;
+            transition:all 0.3s;
+            z-index:-1;
+          }
+          
+        }
+      }
+    }
+    
+    &__Bottom{
+      
+      height: 10%;
+      display: flex;
+      justify-content: center;
+      .Back{
+        letter-spacing: 5px;
+        text-align: center;
+        width: 100%;
+        color: #ffffff;
+        font-size: 20px;
+        padding-top: 30px;
+        z-index: 2;
+        background-color: rgba(155, 214, 201, 0.7);
+      }
+      .Back:hover,
+      .Back:active{
+        background-color: rgba(155, 214, 201, 0.9);
+      }
+      .Back:after{
+        width:100%;
+        height:0%;
+        border-radius:5px;
+        content:"";
+        position:absolute;
+        top:0;
+        left:0;
+        transition:all 0.3s;
+        z-index:-1;
+      }
+    }
+  }
+
+}

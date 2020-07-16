@@ -20,6 +20,7 @@ class PlacesController < ApplicationController
     gon.place = @place
     @places = Place.where.not(id: @place.id)  #@placeのid以外のデータを取得
     gon.places = @places
+    
     @lat = @place.latitude
     @lng = @place.longitude
     gon.lat = @lat
