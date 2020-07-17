@@ -52,6 +52,3 @@ production:
   database: RecommendedPlace_production
   username: RecommendedPlace
   password: <%= ENV['RECOMMENDEDPLACE_DATABASE_PASSWORD'] %>
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
