@@ -41,3 +41,7 @@
 #### カーソルを編集したい地点情報に載せると「編集マーク」が表示されるのでクリック
 <img src="https://user-images.githubusercontent.com/65812742/89799186-14301a80-db68-11ea-96f4-facbfc7019a9.gif" height="500" width="600">
 
+### 6.登録済のお気に入り地点の絞り込み
+#### 6-1 キーワードを入力して「search」をクリックと地点絞り込みが可能
+#### 6-2 「clear」をクリックすると絞り込み状態を解除
+<img src="https://user-images.githubusercontent.com/65812742/89800244-76d5e600-db69-11ea-853d-1e4fc76b76b7.gif" height="500" width="600">
