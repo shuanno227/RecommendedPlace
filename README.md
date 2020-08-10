@@ -28,3 +28,7 @@
 ### 2.現在地からのおすすめ地点検索
 #### 現在地から、お気に入り登録済み地点を距離が近いもの３点を取得
 <img src="https://user-images.githubusercontent.com/65812742/89797150-89e6b700-db65-11ea-99f5-ca1d7ce19c55.gif" height="500" width="600">
+
+### 3.お気に入り地点を登録
+#### Name欄に名称を入力すれば、緯度経度を自動で取得する仕様（名称では地点取得できない場合は住所を入力）
+<img src="https://user-images.githubusercontent.com/65812742/89797839-64a67880-db66-11ea-93ac-7183132a2332.gif" height="500" width="600">
