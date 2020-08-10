@@ -32,3 +32,7 @@
 ### 3.お気に入り地点を登録
 #### Name欄に名称を入力すれば、緯度経度を自動で取得する仕様（名称では地点取得できない場合は住所を入力）
 <img src="https://user-images.githubusercontent.com/65812742/89797839-64a67880-db66-11ea-93ac-7183132a2332.gif" height="500" width="600">
+
+### 4.登録済のお気に入り地点の削除
+#### カーソルを写真に載せると「ゴミ箱マーク」が表示されるのでクリック
+<img src="https://user-images.githubusercontent.com/65812742/89798499-370dff00-db67-11ea-9acf-87a0e958f570.gif" height="500" width="600">
