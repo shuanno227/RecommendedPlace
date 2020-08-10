@@ -36,3 +36,8 @@
 ### 4.登録済のお気に入り地点の削除
 #### カーソルを写真に載せると「ゴミ箱マーク」が表示されるのでクリック
 <img src="https://user-images.githubusercontent.com/65812742/89798499-370dff00-db67-11ea-9acf-87a0e958f570.gif" height="500" width="600">
+
+### 5.登録済のお気に入り地点の編集
+#### カーソルを編集したい地点情報に載せると「編集マーク」が表示されるのでクリック
+<img src="https://user-images.githubusercontent.com/65812742/89799186-14301a80-db68-11ea-96f4-facbfc7019a9.gif" height="500" width="600">
+
