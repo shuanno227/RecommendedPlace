@@ -52,3 +52,14 @@
 - 名前・住所の入力からユーザーの操作なしで緯度経度の取得をGeocorder APIを使用して実装
 - Distance Matrix APIを使用しておすすめ地点までの「所要時間」・「移動距離」の取得を実装
 - Directions APIを使用して、徒歩でのルートの取得を実装
+- MVCとjavascriptでの変数定義・条件分岐による、距離が近い地点３点の絞り込みの実装
+
+## 開発環境・言語
+- Ruby on Rails 
+- google maps api
+- aws
+- javascript
+- ruby
+- haml
+- scss
+
