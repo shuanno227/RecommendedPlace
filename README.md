@@ -62,4 +62,5 @@
 - ruby
 - haml
 - scss
+- heroku（デプロイ環境）
 
